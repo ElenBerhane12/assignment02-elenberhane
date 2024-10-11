@@ -86,4 +86,25 @@ test.describe('Test Suite 01', () => {
         const response = await apiHelper.deleteClient(request, clientIdToDelete);
         expect(response.ok).toBe(true); 
     });
+    // Test Case: Fetch Client by ID (id: 1)
+    test('Fetch client with ID 1', async ({ request }) => {
+        const response = await request.get(`${BASE_URL}/api/client/1`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: process.env.TEST_USERNAME,
+                    token: apiHelper.token,
+                }),
+            },
+        });
+        expect(response.ok()).toBeTruthy();
+        const client = await response.json();
+        expect(client).toMatchObject({
+            id: 1,
+            created: "2020-01-05T12:00:00.000Z",
+            name: "Jonas Hellman",
+            email: "jonas.hellman@example.com",
+            telephone: "070 000 0001",
+        });
+    });
 });

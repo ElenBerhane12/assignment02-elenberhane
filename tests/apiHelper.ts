@@ -72,4 +72,18 @@ export class APIHelper {
         const responseData = await response.json();
         return responseData; 
     }
+    // Fetch a client by ID (GET request)
+    async getClientById(request: APIRequestContext, clientId: number) {
+        const response = await request.get(`${this.BASE_URL}/api/client/${clientId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.TEST_USERNAME,
+                    token: this.token,
+                }),
+            },
+        });
+
+        return response; // Return the full response for validation in test cases
+    }
 }
