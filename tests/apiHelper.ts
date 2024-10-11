@@ -57,4 +57,19 @@ export class APIHelper {
         });
         return await response.json(); 
     }
+    // Delete a client
+    async deleteClient(request: APIRequestContext, clientId: number) {
+        const response = await request.delete(`${this.BASE_URL}/api/client/${clientId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.TEST_USERNAME,
+                    token: this.token,
+                }),
+            },
+        });
+
+        const responseData = await response.json();
+        return responseData; 
+    }
 }

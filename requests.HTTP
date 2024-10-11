@@ -11,7 +11,7 @@ Content-Type: application/json
 ### /clinets 
 GET  http://localhost:3000/api/clients
 Content-Type: application/json
-x-user-auth:{"username":"tester01","token":"d0db8aac248669355e1d3ff05761593f"}
+x-user-auth:{"username":"tester01","token":"3824d63721707869eae2d0188007ae71"}
 
 
 ###/new client
@@ -24,3 +24,9 @@ x-user-auth:{"username":"tester01","token":"958d99ed9ce7f92ac0cedc4eb84bfe6d"}
     "email": "ellen.berhane@example.com",
     "telephone": "070 564 0001"
 }
+
+
+###/ client
+DELETE  http://localhost:3000/api/client/5
+Content-Type: application/json
+x-user-auth:{"username":"tester01","token":"3824d63721707869eae2d0188007ae71"}
