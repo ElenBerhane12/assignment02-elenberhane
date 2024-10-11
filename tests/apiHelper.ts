@@ -86,4 +86,21 @@ export class APIHelper {
 
         return response; // Return the full response for validation in test cases
     }
+    // Delete a client without authorization (invalid token)
+    async deleteClientWithoutAuth(request: APIRequestContext, clientId: number) {
+        const invalidToken = 'invalidToken123456'; // Example invalid token
+
+        const response = await request.delete(`${this.BASE_URL}/api/client/${clientId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: "invalidUser", // Example invalid user
+                    token: invalidToken, // Invalid token
+                }),
+            },
+        });
+
+        // Return the full response so that the caller can check for status code 401 or other details
+        return response;
+    }
 }

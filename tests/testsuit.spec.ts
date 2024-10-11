@@ -107,4 +107,26 @@ test.describe('Test Suite 01', () => {
             telephone: "070 000 0001",
         });
     });
+    // Test case: Attempt to delete a client without authorization
+    test('Delete Client Without Authorization', async ({ request }) => {
+        const clientId = 5; // Example client ID to delete
+
+        // Perform the DELETE request with invalid credentials
+        const deleteResponse = await request.delete(`${BASE_URL}/api/client/${clientId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: "invalidUser",
+                    token: "6683b8c1266c78612dbe99ed2367c647", // Example invalid token
+                }),
+            },
+        });
+
+        // Check if the response status is 401 Unauthorized
+        expect(deleteResponse.status()).toBe(401); // Expect the status to be 401
+        const responseText = await deleteResponse.text();
+
+        // Optionally check the response message
+        expect(responseText).toContain("Unauthorized");
+    });
 });
