@@ -6,3 +6,9 @@ Content-Type: application/json
     "username": "tester01",
     "password": "GteteqbQQgSr88SwNExUQv2ydb7xuf8c"
 }
+
+
+### /clinets 
+GET  http://localhost:3000/api/clients
+Content-Type: application/json
+x-user-auth:{"username":"tester01","token":"d0db8aac248669355e1d3ff05761593f"}

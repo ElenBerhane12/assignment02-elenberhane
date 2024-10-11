@@ -29,4 +29,18 @@ export class APIHelper {
 
         return response; 
     }
+    
+    async getClients(request: APIRequestContext) {
+        const response = await request.get(`${this.BASE_URL}/api/clients`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.TEST_USERNAME,
+                    token: this.token,
+                }),
+            },
+        });
+
+        return await response.json(); 
+    }
 }

@@ -29,4 +29,35 @@ test.describe('Test Suite 01', () => {
         });
     });
 
+    test('Test Case 02: Get All Clients', async ({ request }) => {
+        
+        const clients = await apiHelper.getClients(request);
+        expect(clients).toBeInstanceOf(Array); 
+        expect(clients.length).toBeGreaterThanOrEqual(2); 
+        
+        clients.forEach(client => {
+            expect(client).toHaveProperty('id'); 
+            expect(client).toHaveProperty('created'); 
+            expect(client).toHaveProperty('name'); 
+            expect(client).toHaveProperty('email'); 
+            expect(client).toHaveProperty('telephone'); 
+        });
+
+        expect(clients[0]).toMatchObject({
+            id: 1,
+            created: "2020-01-05T12:00:00.000Z",
+            name: "Jonas Hellman",
+            email: "jonas.hellman@example.com",
+            telephone: "070 000 0001"
+        });
+
+        expect(clients[1]).toMatchObject({
+            id: 2,
+            created: "2020-01-06T12:00:00.000Z",
+            name: "Mikael Eriksson",
+            email: "mikael.eriksson@example.com",
+            telephone: "070 000 0002"
+        });
+    });
+
 });
