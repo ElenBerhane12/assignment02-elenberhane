@@ -11,7 +11,7 @@ Content-Type: application/json
 ### /clinets 
 GET  http://localhost:3000/api/clients
 Content-Type: application/json
-x-user-auth:{"username":"tester01","token":"442a043c753baab9b80144f1da0f9a30"}
+x-user-auth:{"username":"tester01","token":"3cc16d27d89a63d2306494eb9e44b821"}
 
 
 ###/new client
@@ -46,4 +46,6 @@ x-user-auth: {"username":"invalidUser","token":"442a043c753baab9b80144f1da0f9a30
 ###/ Delete Client Without Authorization
 DELETE http://localhost:3000/api/client/5
 Content-Type: application/json
-x-user-auth: {"username":"invalidUser","token":"6683b8c1266c78612dbe99ed2367c647"}
+x-user-auth: {"username":"invalidUser","token":"6683b8c1266c78612dbe99ed2367c647"}'
+
+
