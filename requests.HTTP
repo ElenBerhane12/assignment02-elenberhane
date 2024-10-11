@@ -12,3 +12,15 @@ Content-Type: application/json
 GET  http://localhost:3000/api/clients
 Content-Type: application/json
 x-user-auth:{"username":"tester01","token":"d0db8aac248669355e1d3ff05761593f"}
+
+
+###/new client
+POST http://localhost:3000/api/client/new
+Content-Type: application/json
+x-user-auth:{"username":"tester01","token":"958d99ed9ce7f92ac0cedc4eb84bfe6d"}
+
+{
+    "name": "Ellen Berhane",
+    "email": "ellen.berhane@example.com",
+    "telephone": "070 564 0001"
+}

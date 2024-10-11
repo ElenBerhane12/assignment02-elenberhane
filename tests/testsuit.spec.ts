@@ -28,7 +28,7 @@ test.describe('Test Suite 01', () => {
             token: expect.any(String), 
         });
     });
-
+     // Test Case 02: Get All Clients
     test('Test Case 02: Get All Clients', async ({ request }) => {
         
         const clients = await apiHelper.getClients(request);
@@ -57,6 +57,23 @@ test.describe('Test Suite 01', () => {
             name: "Mikael Eriksson",
             email: "mikael.eriksson@example.com",
             telephone: "070 000 0002"
+        });
+    });
+    // Test Case 02: Create a new client
+    test('Test Case 02: Create a new client', async ({ request }) => {
+        const clientData = {
+            name: "Ellen Berhane",
+            email: "ellen.berhane@example.com",
+            telephone: "070 564 0001"
+        };
+
+        const response = await apiHelper.createClient(request, clientData);
+        expect(response).toMatchObject({
+            name: clientData.name,
+            email: clientData.email,
+            telephone: clientData.telephone,
+            id: expect.any(Number),
+            created: expect.any(String),
         });
     });
 

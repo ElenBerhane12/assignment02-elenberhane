@@ -43,4 +43,18 @@ export class APIHelper {
 
         return await response.json(); 
     }
+    // Create a new client
+    async createClient(request: APIRequestContext, clientData: any) {
+        const response = await request.post(`${this.BASE_URL}/api/client/new`, {
+            data: clientData,
+            headers: {
+                'Content-Type': 'application/json',
+                'x-user-auth': JSON.stringify({
+                    username: this.TEST_USERNAME,
+                    token: this.token,
+                }),
+            },
+        });
+        return await response.json(); 
+    }
 }
